@@ -1,0 +1,16 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<h2>{{post.title}}</h2>
+<h5 [innerHtml]="post.excerpt"></h5>
+<div [innerHtml]="post.content"></div>
+<p> <span>{{post.author.name}}</span></p>
+</ion-content>

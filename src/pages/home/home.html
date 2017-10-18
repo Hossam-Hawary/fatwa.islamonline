@@ -1,12 +1,17 @@
-<ion-header>
+<ion-header >
   <ion-navbar>
-    <button ion-button menuToggle>
+    <button ion-button menuToggle start>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>{{'CATEGORIES' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
- <div>{{ 'HELLO' | translate:param }}</div>
+<ion-content padding >
+{{categories.length}}
+ <ion-list>
+	<ion-item *ngFor="let category of categories" (click)="getSubCategories(category)">
+		{{category.title}}
+	</ion-item>
+ </ion-list>
 </ion-content>

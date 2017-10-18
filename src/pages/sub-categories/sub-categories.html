@@ -1,0 +1,14 @@
+<ion-header >
+  <ion-navbar>
+    <ion-title>{{mainCategory.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding >
+ <ion-list>
+ {{subCategories.length}}
+	<ion-item *ngFor="let category of subCategories" (click)="getPosts(category)" >
+		{{category.title}}
+	</ion-item>
+ </ion-list>
+</ion-content>

@@ -1,0 +1,14 @@
+<ion-header >
+  <ion-navbar>
+    <ion-title>{{category.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding >
+{{posts.length}}
+ <ion-list>
+	<ion-item *ngFor="let post of posts" (click)="openPost(post)">
+		{{post.title}}
+	</ion-item>
+ </ion-list>
+</ion-content>
