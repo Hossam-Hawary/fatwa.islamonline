@@ -16,7 +16,7 @@ import { HomePage } from '../pages/home/home';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any;
+  rootPage: any = HomePage;
 
 
   constructor(
@@ -34,8 +34,6 @@ export class MyApp {
     this.platform.ready().then(() => {
     this.statusBar.styleDefault();
     this.helper.changeConnection((this.network.type != "none"));
-    this.rootPage = HomePage;
-
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
         // this language will be used as a fallback when a translation isn't found in the current language
@@ -44,11 +42,9 @@ export class MyApp {
       this.translate.use('ar');
       this.network.onDisconnect().subscribe((data) => {
           this.helper.changeConnection(false);
-          console.log('network disconnected!'); 
       });
 
       this.network.onConnect().subscribe((data) => {
-          console.log('network connected!'); 
           this.helper.changeConnection(true);
         });
 

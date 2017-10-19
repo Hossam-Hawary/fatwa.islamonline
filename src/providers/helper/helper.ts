@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { LoadingController, AlertController, ModalController, Platform} from 'ionic-angular';
 import { Toast, ToastOptions } from '@ionic-native/toast';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -15,7 +16,8 @@ export class HelperProvider {
 	connectionState:boolean;
   constructor(private loadingCntrl:LoadingController, private alertCtrl:AlertController,
   	private modalCtrl:ModalController, private toast:Toast, private socialSharing: SocialSharing,
-  	private platform: Platform, private spinnerDialog: SpinnerDialog ) {
+  	private platform: Platform, private spinnerDialog: SpinnerDialog,
+     private translateService: TranslateService, private zone:NgZone) {
   }
 
     showSpinner(){
@@ -42,8 +44,10 @@ export class HelperProvider {
         this.loader = null;
       }
     }
+
     createToast(message:string,closeButtonText?:string,position?:string){
-      if (!this.platform.is('cordova')) return ;
+      this.hideSpinner();
+      if (!this.platform.is('cordova')){console.log(message);return ;} 
       if (!message) return ;
       this.platform.ready().then(() => {
         let toastOptions: ToastOptions = {
@@ -52,10 +56,8 @@ export class HelperProvider {
           position: position || 'bottom'
          };
         this.toast.showWithOptions(toastOptions).subscribe();
-        this.hideSpinner();
       });
     }
-
     createAlert(title:string, message:string,buttons:any[],disableBackdropDissmis?){
       let alert = this.alertCtrl.create({
         title: title,
@@ -77,11 +79,25 @@ export class HelperProvider {
     }
 
     isConnected(){
-      console.log("isConnected", this.connectionState)
       return this.connectionState;
     }
+
      displayConnectionError(posision?){
-      this.createToast("no connection!",'',posision);
+      this.createToast(this.translate('ERRORS.OFFLINE'),'',posision);
+    }
+
+    translate(key:string, params?){
+      return this.translateService.instant(key, params)
+    }
+
+    handleRequestError(err){
+      this.createToast(this.translate('ERRORS.REQUEST'),'');
+    }
+
+    runZone(callBack?){
+      this.zone.run(()=>{
+       if(callBack) callBack();
+      })
     }
 
      share(url, message, subject){

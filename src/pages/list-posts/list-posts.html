@@ -11,4 +11,8 @@
 		{{post.title}}
 	</ion-item>
  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)" [enabled]=" nextPage <= totalPages" 
+  threshold='1%'>
+   <ion-infinite-scroll-content></ion-infinite-scroll-content>
+ </ion-infinite-scroll>
 </ion-content>

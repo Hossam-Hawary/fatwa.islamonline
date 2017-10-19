@@ -8,7 +8,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { SubCategoriesPage } from '../pages/sub-categories/sub-categories';
 import { ListPostsPage } from '../pages/list-posts/list-posts';
 import { PostPage } from '../pages/post/post'
 
@@ -29,7 +28,7 @@ export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
  const pages:any[] =[
-  HomePage, SubCategoriesPage, ListPostsPage, PostPage
+  HomePage, ListPostsPage, PostPage
   ]
   @NgModule({
   declarations: [

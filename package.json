@@ -25,7 +25,7 @@
         "@ionic-native/social-sharing": "^4.3.2",
         "@ionic-native/spinner-dialog": "^4.3.2",
         "@ionic-native/splash-screen": "4.3.0",
-        "@ionic-native/status-bar": "4.3.0",
+        "@ionic-native/status-bar": "^4.3.2",
         "@ionic-native/toast": "^4.3.2",
         "@ionic/storage": "2.0.1",
         "@ngx-translate/core": "^8.0.0",
@@ -37,7 +37,7 @@
         "cordova-plugin-native-spinner": "^1.1.3",
         "cordova-plugin-network-information": "^1.3.3",
         "cordova-plugin-splashscreen": "^4.0.3",
-        "cordova-plugin-statusbar": "git+https://github.com/apache/cordova-plugin-statusbar.git",
+        "cordova-plugin-statusbar": "^2.2.3",
         "cordova-plugin-whitelist": "^1.3.2",
         "cordova-plugin-x-socialsharing": "^5.2.0",
         "cordova-plugin-x-toast": "^2.6.0",
@@ -58,14 +58,14 @@
         "plugins": {
             "ionic-plugin-keyboard": {},
             "cordova-plugin-whitelist": {},
-            "cordova-plugin-statusbar": {},
             "cordova-plugin-device": {},
             "cordova-plugin-splashscreen": {},
             "cordova-plugin-ionic-webview": {},
             "cordova-plugin-network-information": {},
             "cordova-plugin-x-socialsharing": {},
             "cordova-plugin-native-spinner": {},
-            "cordova-plugin-x-toast": {}
+            "cordova-plugin-x-toast": {},
+            "cordova-plugin-statusbar": {}
         },
         "platforms": [
             "android",

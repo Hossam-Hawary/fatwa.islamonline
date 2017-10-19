@@ -27,6 +27,7 @@ export class CategoriesProvider {
 	   let seq = this.api.get('get_post/', params);
 	   return seq;
   }
+  
    SearchPost(params?: any) {
 	   let seq = this.api.get('get_search_results/', params)
 	   return seq;
