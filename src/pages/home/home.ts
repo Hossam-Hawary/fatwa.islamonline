@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import { CategoriesProvider } from '../../providers/categories/categories'
-import {HelperProvider} from '../../providers/helper/helper'
+import { HelperProvider } from '../../providers/helper/helper'
 import { Network } from '@ionic-native/network';
 import { ListPostsPage } from '../list-posts/list-posts'
+import { SearchPage } from '../search/search'
 
 
 @Component({
@@ -12,10 +13,6 @@ import { ListPostsPage } from '../list-posts/list-posts'
 })
 export class HomePage {
 	categories:any = [];
-  searchKey:string;
-
-  searching: boolean = false;
-  
   constructor( public navCtrl: NavController, private cateProvider:CategoriesProvider,
     private helper:HelperProvider, private platform:Platform,
     private network:Network) {
@@ -45,26 +42,11 @@ export class HomePage {
     })
   }
 
-  search(ev){
-    if(!this.searchKey) return;
-    console.log(this.searchKey)
-    this.searching = true;
-    this.cateProvider.SearchPost({search:this.searchKey}).subscribe((res:any)=>{
-        this.searching = false;
-        console.log(res)
-    }, 
-    (err)=>{
-      this.helper.handleRequestError(err);
-    })
-  }
-  cancelSearch(ev){
-    console.log("cancelSearch", ev)
-    console.log(this.searchKey)
-  }
-
   getSubCategories(category){
     if(!this.helper.isConnected()){this.helper.displayConnectionError(); return;}
     this.navCtrl.push(ListPostsPage, {category:category})
   }
-
+    openSearch(){
+      this.helper.createModal(SearchPage).present();
+    }
 }

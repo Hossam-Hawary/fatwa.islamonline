@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 import {HelperProvider} from '../../providers/helper/helper'
 
 
@@ -18,11 +18,13 @@ export class PostPage {
 	post:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-  	private helper:HelperProvider) {
+  	private helper:HelperProvider, public viewCtrl: ViewController) {
   	this.post = navParams.get('post');
   }
 	sharePost(post){
 		this.helper.share(post.url, post.title, '')
 	}
-
+   close() {
+     this.viewCtrl.dismiss();
+   }
 }

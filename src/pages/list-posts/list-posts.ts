@@ -64,7 +64,7 @@ export class ListPostsPage {
   }
 
 	openPost(post){
-		this.navCtrl.push(PostPage, {post:post})
+    this.helper.createModal(PostPage, {post:post}).present();
 	}
 
 }

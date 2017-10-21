@@ -8,21 +8,8 @@
 </ion-header>
 
 <ion-content padding >
-<ion-searchbar
-  [(ngModel)]="searchKey"
-  animated=true
-  debounce=700
-  spellcheck=true
-  autocomplete="on"
-  [placeholder]="helper.translate('SEARCH')"
-
-  (ionInput)="search($event)"
-  (ionCancel)="cancelSearch($event)">
-</ion-searchbar>
-    <div *ngIf="searching" class="spinner-container">
-        <ion-spinner></ion-spinner>
-    </div>
  <ion-list>
+ <div (click)="openSearch()">Search</div>
 	<ion-item *ngFor="let category of categories" (click)="getSubCategories(category)">
 		{{category.title}}
 	</ion-item>

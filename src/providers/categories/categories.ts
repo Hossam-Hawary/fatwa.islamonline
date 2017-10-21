@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+// import { ModalController} from 'ionic-angular';
 import { ApiProvider } from '../api/api';
 
 /*
@@ -32,6 +32,7 @@ export class CategoriesProvider {
 	   let seq = this.api.get('get_search_results/', params)
 	   return seq;
   }
+
 //get_category_index/
 //get_category_index/?parent=49
 //get_category_posts/?category_id&count=18&page=2

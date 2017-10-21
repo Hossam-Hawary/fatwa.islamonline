@@ -2,14 +2,17 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{post.title}}</ion-title>
+  	<button icon-only (click)="close()">
+		<ion-icon name="close-circle"></ion-icon>
+	</button>
+    <ion-title [innerHtml]="post.title"></ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-<h2>{{post.title}}</h2>
+<h2 [innerHtml]="post.title"></h2>
 <h5 [innerHtml]="post.excerpt"></h5>
 <div [innerHtml]="post.content"></div>
 <p> <span>{{post.author.name}}</span></p>
