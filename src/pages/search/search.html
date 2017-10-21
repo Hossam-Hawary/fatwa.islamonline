@@ -3,6 +3,9 @@
 
   <ion-navbar>
     <ion-title>{{'SEARCH' | translate }}</ion-title>
+    <button icon-only (click)="close()">
+      <ion-icon name="close-circle"></ion-icon>
+    </button>
   </ion-navbar>
 
 </ion-header>
@@ -28,4 +31,9 @@
 		<span [innerHtml]="post.title"></span>
 	</ion-item>
  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)" 
+  [enabled]=" countTotal > searchResults.length" 
+  threshold='1%'>
+   <ion-infinite-scroll-content></ion-infinite-scroll-content>
+ </ion-infinite-scroll>
 </ion-content>
