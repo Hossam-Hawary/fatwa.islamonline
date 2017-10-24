@@ -9,5 +9,14 @@
 
 
 <ion-content padding>
+ <ion-item>
+    <ion-label  floating>{{'SUBJECT' | translate }}</ion-label>
+    <ion-input [(ngModel)]="subject"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-textarea [(ngModel)]="body" [placeholder]="'EMAIL_BODY' | translate "></ion-textarea>
+  </ion-item>
+
 	<button (click)="openEmailWarning()" > {{'SEND' | translate }} </button>
 </ion-content>
