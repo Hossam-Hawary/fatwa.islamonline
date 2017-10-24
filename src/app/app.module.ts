@@ -22,6 +22,7 @@ import { Network } from '@ionic-native/network';
 import { Toast } from '@ionic-native/toast';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 
 
@@ -57,7 +58,7 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     StatusBar, SplashScreen, {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApiProvider, CategoriesProvider, HelperProvider, Network, Toast, SocialSharing,
-    SpinnerDialog
+    SpinnerDialog, EmailComposer
   ]
 })
 export class AppModule {}

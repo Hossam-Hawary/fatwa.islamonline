@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { LoadingController, AlertController, ModalController, Platform} from 'ionic-angular';
+import { LoadingController, ModalController, Platform} from 'ionic-angular';
 import { Toast, ToastOptions } from '@ionic-native/toast';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
@@ -14,7 +14,7 @@ export class HelperProvider {
 
 	loader:any;
 	connectionState:boolean;
-  constructor(private loadingCntrl:LoadingController, private alertCtrl:AlertController,
+  constructor(private loadingCntrl:LoadingController, 
   	private modalCtrl:ModalController, private toast:Toast, private socialSharing: SocialSharing,
   	private platform: Platform, private spinnerDialog: SpinnerDialog,
      private translateService: TranslateService, private zone:NgZone) {
@@ -58,16 +58,7 @@ export class HelperProvider {
         this.toast.showWithOptions(toastOptions).subscribe();
       });
     }
-    createAlert(title:string, message:string,buttons:any[],disableBackdropDissmis?){
-      let alert = this.alertCtrl.create({
-        title: title,
-        message: message,
-        buttons: buttons,
-        enableBackdropDismiss:!disableBackdropDissmis
-      });
-      this.hideSpinner();
-      return alert;
-    }
+
     createModal(page, data?,options={}){
       let modal = this.modalCtrl.create(page,data, options );
       return modal;
