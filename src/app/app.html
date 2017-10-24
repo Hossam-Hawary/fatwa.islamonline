@@ -1,3 +1,24 @@
 
+<ion-menu [content]="content" side="right">
+   <ion-header>
+     <ion-toolbar>
+       <ion-title>{{'MENU' | translate }}</ion-title>
+     </ion-toolbar>
+   </ion-header>
+ 
+   <ion-content>
+     <ion-list dir="rtl">
+       <button menuClose ion-item *ngFor="let page of pages" (click)="openPage(page)">
+        <ion-icon [name]="page.icon"></ion-icon>
+        <span>{{page.title | translate}}</span>
+       </button>
+     </ion-list>
+   </ion-content>
+ 
+ </ion-menu>
+
+
+
+
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
 <ion-nav dir="rtl"[root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -15,10 +15,11 @@ import { HomePage } from '../pages/home/home';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
+   pages:any[]=[
+   {title:'PRIVACY_POLICY', component:'PrivacyPolicyPage', icon:'lock'},
+    {title:'CONTACT_US', component:'ContactUsPage', icon:'mail'}
+  ]
   rootPage: any = HomePage;
-
-
   constructor(
     public platform: Platform, public statusBar: StatusBar,
     public splashScreen: SplashScreen, private translate: TranslateService,
@@ -50,6 +51,10 @@ export class MyApp {
 
       this.splashScreen.hide();
     });
+  }
+
+    openPage(page) {
+     this.nav.push(page.component);
   }
 
 }
