@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
 import {HelperProvider} from '../../providers/helper/helper'
+import { SearchPage } from '../search/search'
 
 
 /**
@@ -27,4 +28,7 @@ export class PostPage {
    close() {
      this.viewCtrl.dismiss();
    }
+    openSearch(){
+      this.helper.createModal(SearchPage).present();
+    }
 }

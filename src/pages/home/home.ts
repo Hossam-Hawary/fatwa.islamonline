@@ -43,6 +43,7 @@ export class HomePage {
   }
 
   getSubCategories(category){
+    console.log(category.id, category.title)
     if(!this.helper.isConnected()){this.helper.displayConnectionError(); return;}
     this.navCtrl.push(ListPostsPage, {category:category})
   }

@@ -12,25 +12,26 @@
 
 
 <ion-content padding dir="rtl">
-<ion-searchbar
-  [(ngModel)]="searchKey"
-  animated=true
-  debounce=700
-  spellcheck=true
-  autocomplete="on"
-  [placeholder]="helper.translate('SEARCH')"
+      <ion-searchbar
+        [(ngModel)]="searchKey"
+        animated=true
+        debounce=700
+        spellcheck=true
+        autocomplete="on"
+        [placeholder]="helper.translate('SEARCH')"
 
-  (ionInput)="search($event)"
-  (ionCancel)="cancelSearch($event)">
-</ion-searchbar>
-     <ion-list>
-	    <div *ngIf="searching" class="spinner-container">
+        (ionInput)="search($event)"
+        (ionCancel)="cancelSearch($event)">
+      </ion-searchbar>
+	    <div *ngIf="searching" >
 	    	 <ion-spinner></ion-spinner>
 	    </div>
-	<ion-item *ngFor="let post of searchResults" (click)="openPost(post)">
-		<span [innerHtml]="post.title"></span>
-	</ion-item>
- </ion-list>
+
+      <ul class="questions">
+        <li *ngFor="let post of searchResults" (click)="openPost(post)" [innerHtml]="post.title">
+        </li>
+      </ul>
+
   <ion-infinite-scroll (ionInfinite)="loadMore($event)" 
   [enabled]=" countTotal > searchResults.length" 
   threshold='1%'>
