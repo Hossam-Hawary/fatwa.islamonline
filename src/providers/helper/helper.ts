@@ -65,7 +65,6 @@ export class HelperProvider {
     }
     changeConnection(status:boolean){
       this.connectionState = status;
-      console.log("changeConnection", status)
       if(!status) this.displayConnectionError();
     }
 

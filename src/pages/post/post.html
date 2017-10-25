@@ -9,13 +9,13 @@
 </ion-header>
 
 <ion-content padding dir="rtl">
-  <ion-searchbar (click)="openSearch()"></ion-searchbar>
+  <ion-searchbar [placeholder]="helper.translate('SEARCH')" (click)="openSearch()"></ion-searchbar>
   <div class="question-answer" padding>
     <div class="container" padding>
       <h2 [innerHtml]="post.title"></h2>
-      <p class="question-answer-title"> السؤال</p>
+      <p class="question-answer-title"> {{'QUESTION' | translate }}</p>
       <h5 class="question" [innerHtml]="post.excerpt"></h5>
-      <p class="question-answer-title"> الجواب</p>
+      <p class="question-answer-title"> {{'ANSWER' | translate }}</p>
       <div [innerHtml]="post.content"></div>
       <p> <span>{{post.author.name}}</span></p>
       <button (click)="sharePost(post)">share</button>

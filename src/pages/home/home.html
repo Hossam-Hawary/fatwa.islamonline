@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-<ion-searchbar (click)="openSearch()"></ion-searchbar>
+<ion-searchbar [placeholder]="helper.translate('SEARCH')" (click)="openSearch()"></ion-searchbar>
 <img src="assets/img/header-cat.jpg" alt="" />
 
 <ion-grid class="cat-list">

@@ -30,13 +30,13 @@ export class ListPostsPage {
      this.loadSubCate();
   }
 
-  loadPosts( infiniteScroll?){
+  loadPosts(infiniteScroll?){
     this.cateProvider.queryPosts({category_id:this.activeCategory.id, count:50, page:this.nextPage})
     .subscribe((res:any)=>{
         this.posts.push(...res.posts)
         this.totalPages = res.pages; 
-        this.nextPage++;
         if(infiniteScroll) infiniteScroll.complete();
+        this.nextPage++;
         this.helper.hideSpinner();
     },(err)=>{
       this.helper.handleRequestError(err);
@@ -56,7 +56,7 @@ export class ListPostsPage {
     this.nextPage = 1
     this.posts = [];
     this.activeCategory = category;
-    this.loadPosts(category);
+    this.loadPosts();
   }
 
   loadMore(infiniteScroll){
