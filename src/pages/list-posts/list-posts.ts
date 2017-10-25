@@ -53,6 +53,7 @@ export class ListPostsPage {
   }
 
   switchCate(category){
+    this.helper.showSpinner();
     this.nextPage = 1
     this.posts = [];
     this.activeCategory = category;
