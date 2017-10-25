@@ -20,10 +20,60 @@
 ion-content , ion-title {
   font-family: 'Droid Arabic Naskh', serif;
 }
+
+//  searchbar
+
 ion-searchbar.searchbar  {
   background: rgba(0, 0, 0, 0.2);
   .searchbar-input {
     box-shadow: none;
     border-radius: 5px;
+  }
+}
+
+// cat list styles
+
+.cat-list {
+  padding: 0;
+  ion-col  {
+    background: color($colors, primary);
+    text-align: center;
+    border-width: 0px 0px 1px 1px;
+    border-style: solid;
+    border-color: #fff;
+    padding: 2rem;
+    .cat-thumb {
+      height: 9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        max-width: 5rem;
+        margin-bottom: .5rem;
+      }
+    }
+    h1 {
+      font-size: 1.4rem;
+      color: color($colors, light);
+      margin: .2rem 0 0 0;
+    }
+  }
+}
+
+// questions
+
+.questions {
+  list-style: none;
+  margin: 2rem 1.5rem;
+  padding: 0;
+  li {
+    background: url(../assets/img/question.png) no-repeat right top;
+    background-size: 7%;
+    padding-right: 3rem;
+    margin-bottom: 1rem;
+    &:last-child {
+      border-bottom: 1px solid #dedede;
+      padding-bottom: 1rem;
+    }
   }
 }
