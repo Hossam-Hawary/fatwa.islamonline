@@ -11,18 +11,15 @@
 <ion-searchbar (click)="openSearch()"></ion-searchbar>
 <img src="assets/img/header-cat.jpg" alt="" />
 
-
- <ion-grid class="cat-list">
-   <ion-row>
-
-     <ion-col col-6  *ngFor="let category of categories" (click)="getSubCategories(category)">
-       <div class="cat-thumb">
-         <img [src]="'assets/icon/cat/'+ category.id+'.png'" alt="" />
-       </div>
-       <h1>{{category.title}}</h1>
-     </ion-col>
-     
-   </ion-row>
- </ion-grid>
+<ion-grid class="cat-list">
+<ion-row>
+ <ion-col col-6  *ngFor="let category of categories" (click)="getSubCategories(category)">
+   <div class="cat-thumb">
+     <img [src]="'assets/icon/cat/'+ category.id+'.png'" alt="" />
+   </div>
+   <h1>{{category.title}}</h1>
+ </ion-col>
+</ion-row>
+</ion-grid>
 
 </ion-content>

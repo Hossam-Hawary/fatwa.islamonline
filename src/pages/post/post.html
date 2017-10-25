@@ -1,19 +1,14 @@
 
 <ion-header dir="rtl">
-
   <ion-navbar>
   	<button icon-only (click)="close()">
 		<ion-icon name="close-circle"></ion-icon>
 	</button>
     <ion-title [innerHtml]="post.title"></ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding dir="rtl">
-
-
   <ion-searchbar (click)="openSearch()"></ion-searchbar>
   <div class="question-answer" padding>
     <div class="container" padding>
