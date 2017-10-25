@@ -1,3 +1,29 @@
 page-home {
-
+  .cat-list {
+    padding: 0;
+    margin-top: -10px;
+    ion-col  {
+      background: color($colors, primary);
+      text-align: center;
+      border-width: 0px 0px 1px 1px;
+      border-style: solid;
+      border-color: #fff;
+      padding: 2rem;
+      .cat-thumb {
+        height: 9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+          max-width: 5rem;
+          margin-bottom: .5rem;
+        }
+      }
+      h1 {
+        font-size: 1.4rem;
+        color: color($colors, light);
+        margin: .2rem 0 0 0;
+      }
+    }
+  }
 }

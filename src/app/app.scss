@@ -14,3 +14,16 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+@import url(//fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+
+ion-content , ion-title {
+  font-family: 'Droid Arabic Naskh', serif;
+}
+ion-searchbar.searchbar  {
+  background: rgba(0, 0, 0, 0.2);
+  .searchbar-input {
+    box-shadow: none;
+    border-radius: 5px;
+  }
+}

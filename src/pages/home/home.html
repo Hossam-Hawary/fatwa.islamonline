@@ -7,11 +7,101 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding >
-{{categories.length}}
+<ion-content>
+<!-- {{categories.length}} -->
+<ion-searchbar></ion-searchbar>
+<img src="assets/img/header-cat.jpg" alt="" />
  <ion-list>
 	<ion-item *ngFor="let category of categories" (click)="getSubCategories(category)">
 		{{category.title}}
 	</ion-item>
  </ion-list>
+ <ion-grid class="cat-list">
+   <ion-row>
+     <ion-col col-6>
+       <div class="cat-thumb">
+         <img src="assets/icon/cat/family.png" alt="" />
+       </div>
+       <h1>الاسرة</h1>
+     </ion-col>
+     <ion-col col-6>
+       <div class="cat-thumb">
+         <img src="assets/icon/cat/joy.png" alt="" />
+       </div>
+       <h1>الترفية</h1>
+     </ion-col>
+     <ion-col col-6>
+       <div class="cat-thumb">
+         <img src="assets/icon/cat/food.png" alt="" />
+       </div>
+       <h1>الأطعمة و الأشربة</h1>
+     </ion-col>
+     <ion-col col-6>
+       <div class="cat-thumb">
+         <img src="assets/icon/cat/pray.png" alt="" />
+       </div>
+       <h1>الدعاء</h1>
+     </ion-col>
+     <ion-col col-6>
+       <div class="cat-thumb">
+         <img src="assets/icon/cat/quran.png" alt="" />
+       </div>
+       <h1>القرآن و الحديث</h1>
+     </ion-col>
+     <ion-col col-6>
+       <div class="cat-thumb">
+         <img src="assets/icon/cat/muslim-girl.png" alt="" />
+       </div>
+       <h1>المرأة المسلمة</h1>
+     </ion-col>
+     <ion-col col-6>
+       <div class="cat-thumb">
+         <img src="assets/icon/cat/athics.png" alt="" />
+       </div>
+       <h1>الأخلاق و الأداب</h1>
+     </ion-col>
+     <ion-col col-6>
+       <div class="cat-thumb">
+         <img src="assets/icon/cat/loan.png" alt="" />
+       </div>
+       <h1>القرض</h1>
+     </ion-col>
+     <ion-col col-6>
+       <div class="cat-thumb">
+         <img src="assets/icon/cat/torusim.png" alt="" />
+       </div>
+       <h1>السياحة و الآثار</h1>
+     </ion-col>
+     <ion-col col-6>
+       <div class="cat-thumb">
+         <img src="assets/icon/cat/thief.png" alt="" />
+       </div>
+       <h1>السرقة</h1>
+     </ion-col>
+     <ion-col col-6>
+       <div class="cat-thumb">
+         <img src="assets/icon/cat/healthy.png" alt="" />
+       </div>
+       <h1>قضايا علمية و صحية</h1>
+     </ion-col>
+     <ion-col col-6>
+       <div class="cat-thumb">
+         <img src="assets/icon/cat/communcation.png" alt="" />
+       </div>
+       <h1>فقة المعاملات</h1>
+     </ion-col>
+     <ion-col col-6>
+       <div class="cat-thumb">
+         <img src="assets/icon/cat/athics.png" alt="" />
+       </div>
+       <h1>الأخلاق و الأداب</h1>
+     </ion-col>
+     <ion-col col-6>
+       <div class="cat-thumb">
+         <img src="assets/icon/cat/athics.png" alt="" />
+       </div>
+       <h1>الأخلاق و الأداب</h1>
+     </ion-col>
+   </ion-row>
+ </ion-grid>
 </ion-content>
