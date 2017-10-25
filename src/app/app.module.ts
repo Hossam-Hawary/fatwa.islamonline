@@ -8,9 +8,13 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+<<<<<<< HEAD
 // import { SubCategoriesPage } from '../pages/sub-categories/sub-categories';
+=======
+>>>>>>> 01e39d49352c7d8c6aa181b39db14a8fae390459
 import { ListPostsPage } from '../pages/list-posts/list-posts';
 import { PostPage } from '../pages/post/post'
+import { SearchPage } from '../pages/search/search'
 
 import { ApiProvider } from '../providers/api/api';
 import { CategoriesProvider } from '../providers/categories/categories';
@@ -29,7 +33,11 @@ export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
  const pages:any[] =[
+<<<<<<< HEAD
   HomePage,  ListPostsPage, PostPage
+=======
+  HomePage, ListPostsPage, PostPage, SearchPage
+>>>>>>> 01e39d49352c7d8c6aa181b39db14a8fae390459
   ]
   @NgModule({
   declarations: [

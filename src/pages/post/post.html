@@ -1,11 +1,15 @@
 
 <ion-header>
   <ion-navbar>
-    <ion-title>{{post.title}}</ion-title>
+  	<button icon-only (click)="close()">
+		<ion-icon name="close-circle"></ion-icon>
+	</button>
+    <ion-title [innerHtml]="post.title"></ion-title>
   </ion-navbar>
 </ion-header>
 
 
+<<<<<<< HEAD
 <ion-content >
   <ion-searchbar></ion-searchbar>
   <div class="question-answer" padding>
@@ -19,4 +23,12 @@
       <button (click)="sharePost(post)">share</button>
     </div>
   </div>
+=======
+<ion-content padding>
+<h2 [innerHtml]="post.title"></h2>
+<h5 [innerHtml]="post.excerpt"></h5>
+<div [innerHtml]="post.content"></div>
+<p> <span>{{post.author.name}}</span></p>
+<button (click)="sharePost(post)">share</button> 
+>>>>>>> 01e39d49352c7d8c6aa181b39db14a8fae390459
 </ion-content>

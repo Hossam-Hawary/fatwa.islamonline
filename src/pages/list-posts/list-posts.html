@@ -4,6 +4,7 @@
   </ion-navbar>
 </ion-header>
 
+<<<<<<< HEAD
 <ion-content >
 <!-- {{posts.length}} -->
 <ion-searchbar></ion-searchbar>
@@ -14,3 +15,15 @@
   </li>
 </ul>
 </ion-content>
+=======
+<ion-content padding >
+ <ion-list>
+	<ion-item *ngFor="let post of posts" [innerHtml]="post.title" (click)="openPost(post)">
+	</ion-item>
+ </ion-list>
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)" [enabled]=" nextPage <= totalPages" 
+  threshold='1%'>
+   <ion-infinite-scroll-content></ion-infinite-scroll-content>
+ </ion-infinite-scroll>
+</ion-content>
+>>>>>>> 01e39d49352c7d8c6aa181b39db14a8fae390459

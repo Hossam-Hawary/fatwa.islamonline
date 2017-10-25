@@ -7,6 +7,7 @@
   </ion-navbar>
 </ion-header>
 
+<<<<<<< HEAD
 <ion-content>
 <!-- {{categories.length}} -->
 
@@ -19,6 +20,12 @@
  <ion-list>
    <div (click)="openSearch()">Search</div>
 	<ion-item  *ngFor="let category of categories" (click)="getSubCategories(category)">
+=======
+<ion-content padding >
+ <ion-list>
+ <div (click)="openSearch()">Search</div>
+	<ion-item *ngFor="let category of categories" (click)="getSubCategories(category)">
+>>>>>>> 01e39d49352c7d8c6aa181b39db14a8fae390459
 		{{category.title}}
 	</ion-item>
  </ion-list>
