@@ -4,7 +4,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding >
+<ion-content>
 
  <ion-searchbar [placeholder]="helper.translate('SEARCH')" (click)="openSearch()"></ion-searchbar>
 <!--       <ion-col col-6  (click)="switchCate(category)">
@@ -14,7 +14,7 @@
         <h1>{{'ALL' | translate }}</h1>
       </ion-col> -->
 
- <ion-slides dir="rtl" style="height: 45%;" *ngIf="this.subCategories.length">
+ <ion-slides dir="rtl" *ngIf="this.subCategories.length">
   <ion-slide *ngFor="let ar of arrays">
     <ion-grid class="cat-list">
       <ion-row>
@@ -25,7 +25,7 @@
         </div>
         <h1>{{cate.title}}</h1>
       </ion-col>
-     
+
       </ion-row>
   </ion-grid>
   </ion-slide>
@@ -36,9 +36,8 @@
   </li>
 </ul>
 
-<ion-infinite-scroll (ionInfinite)="loadMore($event)" [enabled]=" nextPage <= totalPages" 
+<ion-infinite-scroll (ionInfinite)="loadMore($event)" [enabled]=" nextPage <= totalPages"
   threshold='1%'>
    <ion-infinite-scroll-content></ion-infinite-scroll-content>
  </ion-infinite-scroll>
 </ion-content>
-
