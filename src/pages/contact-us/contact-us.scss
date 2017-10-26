@@ -1,3 +1,12 @@
 page-contact-us {
-
+  .contact-us {
+    ion-list {
+      ion-item {
+        padding: 0;
+      }
+      .send {
+        margin-top: 3rem;
+      }
+    }
+  }
 }
