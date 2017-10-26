@@ -19,7 +19,7 @@
     <ion-grid class="cat-list">
       <ion-row>
 
-      <ion-col col-6 *ngFor="let cate of ar;let last=last" (click)="switchCate(cate)">
+      <ion-col col-6  *ngFor="let cate of ar;let last=last" (click)="switchCate(cate)">
         <div class="cat-thumb">
           <img [src]="'assets/icon/cat/'+ category.id+'.png'" alt="" />
         </div>

@@ -1,27 +1,16 @@
-
-<ion-header dir="rtl">
-
-  <ion-navbar>
-    <ion-title>{{'SEARCH' | translate }}</ion-title>
-    <button icon-only (click)="close()">
-      <ion-icon name="close-circle"></ion-icon>
-    </button>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding dir="rtl">
+<ion-content dir="rtl">
       <ion-searchbar
+        autofocus
         [(ngModel)]="searchKey"
-        animated=true
-        debounce=700
+        animated=false
+        debounce=500
         spellcheck=true
+        showCancelButton=true
         autocomplete="on"
+        cancelButtonText= "إلغاء"
         [placeholder]="helper.translate('SEARCH')"
-
-        (ionInput)="search($event)"
-        (ionCancel)="cancelSearch($event)">
+        (ionCancel)="close()"
+        (ionInput)="search($event)">
       </ion-searchbar>
 	    <div *ngIf="searching" >
 	    	 <ion-spinner></ion-spinner>
@@ -32,8 +21,8 @@
         </li>
       </ul>
 
-  <ion-infinite-scroll (ionInfinite)="loadMore($event)" 
-  [enabled]=" countTotal > searchResults.length" 
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)"
+  [enabled]=" countTotal > searchResults.length"
   threshold='1%'>
    <ion-infinite-scroll-content></ion-infinite-scroll-content>
  </ion-infinite-scroll>

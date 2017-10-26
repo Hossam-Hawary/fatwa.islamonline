@@ -31,8 +31,9 @@ ion-searchbar.searchbar  {
   }
 }
 
-// cat list styles
 
+
+//
 .cat-list {
   padding: 0;
   ion-col  {
@@ -40,7 +41,7 @@ ion-searchbar.searchbar  {
     text-align: center;
     border-width: 0px 0px 1px 1px;
     border-style: solid;
-    border-color: #fff;
+    border-color: rgba(255, 255, 255, 0.26);
     padding: 2rem;
     .cat-thumb {
       height: 9rem;
@@ -76,4 +77,8 @@ ion-searchbar.searchbar  {
       padding-bottom: 1rem;
     }
   }
+}
+
+.order {
+  order: 1;
 }
