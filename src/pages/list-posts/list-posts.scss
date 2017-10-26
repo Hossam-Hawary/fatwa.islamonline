@@ -1,33 +1,5 @@
 page-list-posts {
-  .list-posts {
-    ion-slides.slide-cat {
-      display: flex;
-      flex-wrap: wrap;
-      ion-slide {
-        background: color($colors, primary);
-        text-align: center;
-        border-width: 0px 0px 1px 1px;
-        border-style: solid;
-        border-color: #fff;
-        padding: 2rem;
-        flex-grow: 1;
-        width: 50% !important;
-        h1 {
-          font-size: 1.4rem;
-          color: color($colors, light);
-          margin: .2rem 0 0 0;
-        }
-        .cat-thumb {
-          height: 9rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          img {
-            max-width: 5rem;
-            margin-bottom: .5rem;
-          }
-        }
-      }
-    }
+  ion-slides {
+    height: 62%;
   }
 }
