@@ -14,12 +14,12 @@
         <h1>{{'ALL' | translate }}</h1>
       </ion-col> -->
 
- <ion-slides dir="rtl">
-  <ion-slide *ngFor="let ar of arrays; let last1=last">
+ <ion-slides dir="rtl" *ngIf="arrays.length">
+  <ion-slide *ngFor="let ar of arrays; let lastAr=last">
     <ion-grid class="cat-list">
       <ion-row>
 
-      <ion-col col-6 [ngClass]="{'full-width' : last1&&last&& ((subCategories.length % 2) == 1)}" *ngFor="let cate of ar;let last=last" (click)="switchCate(cate)">
+      <ion-col col-6 [ngClass]="{'full-width' : lastAr && last && isOdd}" *ngFor="let cate of ar;let last=last" (click)="switchCate(cate)">
         <div class="cat-thumb">
           <img [src]="'assets/icon/cat/'+ category.id+'.png'" alt="" />
         </div>

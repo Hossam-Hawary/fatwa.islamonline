@@ -15,7 +15,7 @@ export class ListPostsPage {
   category:any
   activeCategory:any
   posts:any[]=[];
-  subCategories:any[]=[];
+  isOdd:boolean;
   arrays:any[]=[]
 	totalPages:number = 1;
 	nextPage:number = 1;
@@ -46,14 +46,10 @@ export class ListPostsPage {
 
   loadSubCate(){
    this.cateProvider.queryCate({parent:this.category.id}).subscribe((res:any)=>{
-   this.subCategories = res.categories;
-
-      let size = 4;
-
-    while (res.categories.length )
-        this.arrays.push(res.categories.splice(0, size));
-
-    console.log(this.arrays);
+   this.isOdd = (res.categories.length % 2) == 1
+   let size = 4;
+   while (res.categories.length ) this.arrays.push(res.categories.splice(0, size));
+   console.log(this.arrays)
     }, 
     (err)=>{
       this.helper.handleRequestError(err);
