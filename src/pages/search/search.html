@@ -27,7 +27,7 @@
         (ionCancel)="close()"
         (ionInput)="search($event)">
       </ion-searchbar>
-	    <div *ngIf="searching" >
+	    <div *ngIf="searching" class="spinner">
 	    	 <ion-spinner></ion-spinner>
 	    </div>
 
