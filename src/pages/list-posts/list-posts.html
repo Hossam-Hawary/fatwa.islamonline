@@ -7,25 +7,30 @@
 <ion-content padding >
 
  <ion-searchbar [placeholder]="helper.translate('SEARCH')" (click)="openSearch()"></ion-searchbar>
-  <ion-grid class="cat-list" *ngIf="subCategories.length">
-    <ion-row>
-
-      <ion-col col-6  (click)="switchCate(category)">
+<!--       <ion-col col-6  (click)="switchCate(category)">
         <div class="cat-thumb">
           <img [src]="'assets/icon/cat/'+ category.id+'.png'" alt="" />
         </div>
         <h1>{{'ALL' | translate }}</h1>
-      </ion-col>
+      </ion-col> -->
 
-      <ion-col col-6  *ngFor="let cate of subCategories" (click)="switchCate(cate)">
+ <ion-slides dir="rtl" style="height: 45%;">
+  <ion-slide *ngFor="let ar of arrays">
+    <ion-grid class="cat-list">
+      <ion-row>
+
+      <ion-col col-6 *ngFor="let cate of ar;let last=last" (click)="switchCate(cate)">
         <div class="cat-thumb">
           <img [src]="'assets/icon/cat/'+ category.id+'.png'" alt="" />
         </div>
         <h1>{{cate.title}}</h1>
       </ion-col>
-   
-    </ion-row>
+     
+      </ion-row>
   </ion-grid>
+  </ion-slide>
+</ion-slides>
+
 <ul class="questions">
   <li *ngFor="let post of posts" (click)="openPost(post)" [innerHtml]="post.title">
   </li>
