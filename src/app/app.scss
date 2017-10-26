@@ -36,6 +36,10 @@ ion-searchbar.searchbar  {
 //
 .cat-list {
   padding: 0;
+  ion-col.full-width {
+    max-width: 100%;
+    flex: 100%;
+  }
   ion-col  {
     background: color($colors, primary);
     text-align: center;
