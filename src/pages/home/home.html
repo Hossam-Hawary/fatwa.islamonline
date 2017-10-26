@@ -13,7 +13,7 @@
 
 <ion-grid class="cat-list">
 <ion-row>
- <ion-col col-6  *ngFor="let category of categories" (click)="getSubCategories(category)">
+ <ion-col col-6 [ngClass]="{'full-width' : last}" *ngFor="let category of categories; let last=last" (click)="getSubCategories(category)">
    <div class="cat-thumb">
      <img [src]="'assets/icon/cat/'+ category.id+'.png'" alt="" />
    </div>
