@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 */
 @Injectable()
 export class ApiProvider {
-	 apiUrl: string = '/api/api/';
+	 apiUrl: string = 'https://fatwa.islamonline.net/api/';
 
   constructor(public http: HttpClient) {
   }
