@@ -2,6 +2,11 @@
   "name": "fatwa",
   "app_id": "840c7614",
   "type": "ionic-angular",
+  "proxies": [{
+    "path": "/api/",
+    "proxyUrl": "https://fatwa.islamonline.net/api/"
+  }],
+
   "integrations": {
     "cordova": {}
   }
