@@ -1,14 +1,22 @@
 
 <ion-header dir="rtl">
-  <ion-navbar>
-  	<button icon-only (click)="close()">
-		<ion-icon name="close-circle"></ion-icon>
-	</button>
+  <ion-toolbar>
+    <ion-buttons class="order" start (click)="close()">
+      <button ion-button clear icon-only>
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title [innerHtml]="post.title"></ion-title>
-  </ion-navbar>
+    <ion-buttons end (click)="sharePost(post)">
+      <button ion-button clear icon-only>
+        <ion-icon name="share"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding dir="rtl">
+
+<ion-content dir="rtl">
   <ion-searchbar [placeholder]="helper.translate('SEARCH')" (click)="openSearch()"></ion-searchbar>
   <div class="question-answer" padding>
     <div class="container" padding>
@@ -18,7 +26,7 @@
       <p class="question-answer-title"> {{'ANSWER' | translate }}</p>
       <div [innerHtml]="post.content"></div>
       <p> <span>{{post.author.name}}</span></p>
-      <button (click)="sharePost(post)">share</button>
+      <!-- <button (click)="sharePost(post)">share</button> -->
     </div>
   </div>
 </ion-content>
