@@ -93,3 +93,13 @@ ion-searchbar.searchbar  {
   margin: 1rem auto;
   display: block;
 }
+
+.no-connection {
+  img {
+    max-width: 14rem;
+    opacity: .8;
+    margin: 4rem 0 0;
+  }
+  text-align: center;
+
+}
