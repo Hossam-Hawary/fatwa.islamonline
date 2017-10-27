@@ -46,6 +46,10 @@ export class ListPostsPage {
 
   loadSubCate(){
    this.cateProvider.queryCate({parent:this.category.id}).subscribe((res:any)=>{
+    if(!res.categories.length) return;
+    let all = JSON.parse( JSON.stringify(this.category))
+    all.title=this.helper.translate('ALL')
+    res.categories.splice(0, 0, all)
    this.isOdd = (res.categories.length % 2) == 1
    let size = 4;
    while (res.categories.length ) this.arrays.push(res.categories.splice(0, size));

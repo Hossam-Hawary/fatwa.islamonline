@@ -7,26 +7,21 @@
 <ion-content>
 
  <ion-searchbar [placeholder]="helper.translate('SEARCH')" (click)="openSearch()"></ion-searchbar>
-<!--       <ion-col col-6  (click)="switchCate(category)">
-        <div class="cat-thumb">
-          <img [src]="'assets/icon/cat/'+ category.id+'.png'" alt="" />
-        </div>
-        <h1>{{'ALL' | translate }}</h1>
-      </ion-col> -->
+
 
  <ion-slides dir="rtl" *ngIf="arrays.length">
+
+  <ion-slide *ngFor="let ar of arrays; let lastAr=last; let firstAr=first">
+    <ion-grid class="cat-list">
+      <ion-row>
    <div class="control">
-     <button class="next" ion-button clear>
+     <button class="next" ion-button clear *ngIf="!firstAr">
        <img src="assets/icon/next-slid.png" />
      </button>
-     <button class="prev" ion-button clear>
+     <button class="prev" ion-button clear *ngIf="!lastAr">
        <img src="assets/icon/perv-slide.png" />
      </button>
    </div>
-  <ion-slide *ngFor="let ar of arrays; let lastAr=last">
-    <ion-grid class="cat-list">
-      <ion-row>
-
       <ion-col col-6 [ngClass]="{'full-width' : lastAr && last && isOdd}" *ngFor="let cate of ar;let last=last" (click)="switchCate(cate)">
         <div class="cat-thumb">
           <img [src]="'assets/icon/cat/'+ category.id+'.png'" alt="" />
