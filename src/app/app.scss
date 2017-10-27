@@ -47,6 +47,7 @@ ion-searchbar.searchbar  {
     border-style: solid;
     border-color: rgba(255, 255, 255, 0.26);
     padding: 2rem;
+    max-height: 16rem;
     .cat-thumb {
       height: 9rem;
       display: flex;

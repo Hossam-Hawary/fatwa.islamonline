@@ -1,24 +1,24 @@
 page-list-posts {
   ion-slides {
-    height: 62%;
+    height: 45%;
     .swiper-container {
       .swiper-wrapper {
         .control {
           position: absolute;
-          width: 44%;
+          width: 100%;
           z-index: 10;
           button {
-            position: relative;
-            top: 13.3rem;
+            position: absolute;
+            top: 12.6rem;
             img {
               width: 1.5rem;
             }
           }
           .prev {
-            right: 21.5rem;
+            left: -1rem;
           }
           .next {
-            left: 1rem;
+            right: -1rem;
           }
         }
       }
