@@ -15,6 +15,14 @@
       </ion-col> -->
 
  <ion-slides dir="rtl" *ngIf="arrays.length">
+   <div class="control">
+     <button class="next" ion-button clear>
+       <img src="assets/icon/next-slid.png" />
+     </button>
+     <button class="prev" ion-button clear>
+       <img src="assets/icon/perv-slide.png" />
+     </button>
+   </div>
   <ion-slide *ngFor="let ar of arrays; let lastAr=last">
     <ion-grid class="cat-list">
       <ion-row>
@@ -29,6 +37,7 @@
       </ion-row>
   </ion-grid>
   </ion-slide>
+
 </ion-slides>
 
 <ul class="questions">
