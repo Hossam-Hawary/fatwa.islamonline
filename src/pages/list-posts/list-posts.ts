@@ -49,7 +49,6 @@ export class ListPostsPage {
    this.isOdd = (res.categories.length % 2) == 1
    let size = 4;
    while (res.categories.length ) this.arrays.push(res.categories.splice(0, size));
-   console.log(this.arrays)
     }, 
     (err)=>{
       this.helper.handleRequestError(err);

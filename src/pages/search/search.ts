@@ -37,7 +37,6 @@ export class SearchPage {
       this.nextPage = 2;
 	    this.cateProvider.SearchPost({search:this.searchKey, count:20}).subscribe((res:any)=>{
 	        this.searching = false;
-	        console.log(res)
 	        this.searchResults = res.posts;
           this.countTotal = res.count_total
 	    }, 

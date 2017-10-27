@@ -13,6 +13,7 @@ import { SearchPage } from '../search/search'
 })
 export class HomePage {
 	categories:any = [];
+  offline:boolean = false;
   constructor( public navCtrl: NavController, private cateProvider:CategoriesProvider,
     private helper:HelperProvider, private platform:Platform,
     private network:Network) {
@@ -23,14 +24,14 @@ export class HomePage {
     this.platform.ready().then(() => {
       this.loadCategories();
       this.network.onConnect().subscribe((data) => {
-               console.log(this.categories)
+          this.offline = false;
           if(!this.categories.length) this.loadCategories();
         });
     });
   }
 
   loadCategories(){
-     if(!this.helper.isConnected()){this.helper.displayConnectionError(); return;}
+     if(!this.helper.isConnected()){this.offline = true;this.helper.displayConnectionError(); return;}
      this.helper.showSpinner();
      this.cateProvider.queryCate({parent:'0'}).subscribe((res:any)=>{
        this.categories = res.categories.filter((category) => { return !category.parent });
@@ -43,7 +44,6 @@ export class HomePage {
   }
 
   getSubCategories(category){
-    console.log(category.id, category.title)
     if(!this.helper.isConnected()){this.helper.displayConnectionError(); return;}
     this.navCtrl.push(ListPostsPage, {category:category})
   }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, AlertController, Platform } from 'ionic-angular';
+import { IonicPage, NavController, AlertController, Platform } from 'ionic-angular';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -14,7 +14,7 @@ export class ContactUsPage {
 	body:string;
 	subject:string;
 
-  constructor(private emailComposer: EmailComposer, private alertCtrl:AlertController,
+  constructor(private navCtrl:NavController, private emailComposer: EmailComposer, private alertCtrl:AlertController,
   	 private translate: TranslateService, private platform:Platform) {
   }
 
@@ -42,7 +42,9 @@ export class ContactUsPage {
 		  isHtml: true
  	}
  	this.platform.ready().then(() => {
- 		this.emailComposer.open(email);
+ 		this.emailComposer.open(email).then(()=>{
+       this.navCtrl.pop()
+     });
  	});
  }
 

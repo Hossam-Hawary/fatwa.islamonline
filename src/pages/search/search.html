@@ -22,7 +22,7 @@
         spellcheck=true
         showCancelButton=true
         autocomplete="on"
-        cancelButtonText= "إلغاء"
+        [cancelButtonText]= "'CANCEL' | translate"
         [placeholder]="helper.translate('SEARCH')"
         (ionCancel)="close()"
         (ionInput)="search($event)">
@@ -36,16 +36,14 @@
         </li>
       </ul>
 
+       <div class="state-app" *ngIf="!countTotal && !searching">
+         <img src="assets/img/no-network.png" alt="" />
+         <p>{{'ERRORS.NO_RESAULTS' | translate }}</p>
+       </div>
   <ion-infinite-scroll (ionInfinite)="loadMore($event)"
   [enabled]=" countTotal > searchResults.length"
   threshold='1%'>
    <ion-infinite-scroll-content></ion-infinite-scroll-content>
  </ion-infinite-scroll>
-
-
- <!-- <div class="state-app">
-   <img src="assets/img/no-network.png" alt="" />
-   <p>عفواً لا يوجد نتائج بهذه الكلمات  </p>
- </div> -->
 
 </ion-content>
