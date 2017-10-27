@@ -14,6 +14,7 @@ import { SearchPage } from '../search/search'
 export class HomePage {
 	categories:any = [];
   offline:boolean = false;
+  err:any
   constructor( public navCtrl: NavController, private cateProvider:CategoriesProvider,
     private helper:HelperProvider, private platform:Platform,
     private network:Network) {
@@ -40,6 +41,8 @@ export class HomePage {
     }, 
     (err)=>{
       this.helper.handleRequestError(err);
+      console.log(err)
+      this.err = JSON.stringify(err)
     })
   }
 
