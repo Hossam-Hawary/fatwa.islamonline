@@ -4,6 +4,7 @@ import { Toast, ToastOptions } from '@ionic-native/toast';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 import { TranslateService } from '@ngx-translate/core';
+import { Pro } from '@ionic/pro';
 
 
 
@@ -82,6 +83,7 @@ export class HelperProvider {
 
     handleRequestError(err){
       this.createToast(this.translate('ERRORS.REQUEST'),'');
+      Pro.getApp().monitoring.exception(err);
     }
 
     runZone(callBack?){

@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicModule } from 'ionic-angular';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { Pro } from '@ionic/pro';
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -32,6 +34,17 @@ export function createTranslateLoader(http: HttpClient) {
  const pages:any[] =[
   HomePage, ListPostsPage, PostPage, SearchPage
   ]
+
+  const IonicPro = Pro.init('840c7614', {
+    appVersion: "0.0.1"
+  });
+
+  export class MyErrorHandler implements ErrorHandler {
+  handleError(err: any): void {
+    IonicPro.monitoring.handleNewError(err);
+  }
+}
+
   @NgModule({
   declarations: [
     MyApp,
@@ -56,7 +69,7 @@ export function createTranslateLoader(http: HttpClient) {
    ...pages
   ],
   providers: [
-    StatusBar, SplashScreen, {provide: ErrorHandler, useClass: IonicErrorHandler},
+    StatusBar, SplashScreen, { provide: ErrorHandler, useClass: MyErrorHandler },
     ApiProvider, CategoriesProvider, HelperProvider, Network, Toast, SocialSharing,
     SpinnerDialog, EmailComposer
   ]
