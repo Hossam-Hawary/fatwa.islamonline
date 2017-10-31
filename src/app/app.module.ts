@@ -25,6 +25,8 @@ import { Toast } from '@ionic-native/toast';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { HTTP } from '@ionic-native/http';
+
 
 
 
@@ -36,7 +38,7 @@ export function createTranslateLoader(http: HttpClient) {
   ]
 
   const IonicPro = Pro.init('840c7614', {
-    appVersion: "0.0.1"
+    appVersion: "1.0.0"
   });
 
   export class MyErrorHandler implements ErrorHandler {
@@ -69,9 +71,9 @@ export function createTranslateLoader(http: HttpClient) {
    ...pages
   ],
   providers: [
-    StatusBar, SplashScreen, { provide: ErrorHandler, useClass: MyErrorHandler },
+    StatusBar, SplashScreen,
     ApiProvider, CategoriesProvider, HelperProvider, Network, Toast, SocialSharing,
-    SpinnerDialog, EmailComposer
+    SpinnerDialog, EmailComposer, HTTP
   ]
 })
 export class AppModule {}

@@ -33,9 +33,10 @@ export class ListPostsPage {
 
   loadPosts(infiniteScroll?){
     this.cateProvider.queryPosts({category_id:this.activeCategory.id, count:50, page:this.nextPage})
-    .subscribe((res:any)=>{
-        this.posts.push(...res.posts)
-        this.totalPages = res.pages; 
+    .then((res:any)=>{
+        let data = JSON.parse(res.data)
+        this.posts.push(...data.posts)
+        this.totalPages = data.pages; 
         if(infiniteScroll) infiniteScroll.complete();
         this.nextPage++;
         this.helper.hideSpinner();
@@ -45,14 +46,15 @@ export class ListPostsPage {
   }
 
   loadSubCate(){
-   this.cateProvider.queryCate({parent:this.category.id}).subscribe((res:any)=>{
-    if(!res.categories.length) return;
+   this.cateProvider.queryCate({parent:this.category.id}).then((res:any)=>{
+    let data = JSON.parse(res.data)
+    if(!data.categories.length) return;
     let all = JSON.parse( JSON.stringify(this.category))
     all.title=this.helper.translate('ALL')
-    res.categories.splice(0, 0, all)
-   this.isOdd = (res.categories.length % 2) == 1
+    data.categories.splice(0, 0, all)
+   this.isOdd = (data.categories.length % 2) == 1
    let size = 4;
-   while (res.categories.length ) this.arrays.push(res.categories.splice(0, size));
+   while (data.categories.length ) this.arrays.push(data.categories.splice(0, size));
     }, 
     (err)=>{
       this.helper.handleRequestError(err);

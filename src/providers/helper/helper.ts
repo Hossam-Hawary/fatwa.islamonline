@@ -83,7 +83,7 @@ export class HelperProvider {
 
     handleRequestError(err){
       this.createToast(this.translate('ERRORS.REQUEST'),'');
-      Pro.getApp().monitoring.exception(err);
+      // Pro.getApp().monitoring.exception(err);
     }
 
     runZone(callBack?){

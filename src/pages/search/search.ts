@@ -35,10 +35,11 @@ export class SearchPage {
 	    console.log(this.searchKey)
 	    this.searching = true;
       this.nextPage = 2;
-	    this.cateProvider.SearchPost({search:this.searchKey, count:20}).subscribe((res:any)=>{
+	    this.cateProvider.SearchPost({search:this.searchKey, count:20}).then((res:any)=>{
+          let data = JSON.parse(res.data)
 	        this.searching = false;
-	        this.searchResults = res.posts;
-          this.countTotal = res.count_total
+	        this.searchResults = data.posts;
+          this.countTotal = data.count_total
 	    }, 
 	    (err)=>{
 	      this.helper.handleRequestError(err);
@@ -47,8 +48,9 @@ export class SearchPage {
 
     loadMore(infiniteScroll){
     if(!this.helper.isConnected()){infiniteScroll.complete(); return;}
-      this.cateProvider.SearchPost({search:this.searchKey, count:20, page:this.nextPage}).subscribe((res:any)=>{
-          this.searchResults.push( ...res.posts);
+      this.cateProvider.SearchPost({search:this.searchKey, count:20, page:this.nextPage}).then((res:any)=>{
+          let data = JSON.parse(res.data)
+          this.searchResults.push( ...data.posts);
           infiniteScroll.complete();
           this.nextPage++
       }, 

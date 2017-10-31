@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { HTTP } from '@ionic-native/http';
 
 
 /*
@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
 export class ApiProvider {
 	 apiUrl: string = 'https://fatwa.islamonline.net/api/';
 
-  constructor(public http: HttpClient) {
+  constructor( private http: HTTP) {
   }
 
     get(endpoint: string, params?: any) {
@@ -25,7 +25,7 @@ export class ApiProvider {
       }
     }
 
-    return this.http.get(this.apiUrl + endpoint);
+    return this.http.get(this.apiUrl + endpoint,{},{});
   }
 
 }

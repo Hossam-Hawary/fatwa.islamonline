@@ -15,8 +15,8 @@ export class CategoriesProvider {
   }
 
    queryCate(params?: any) {
-	   let seq = this.api.get('get_category_index/', params)
-	   return seq;
+	  return this.api.get('get_category_index/', params)
+	   
   }
  
    queryPosts(params?: any) {

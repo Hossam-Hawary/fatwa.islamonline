@@ -33,8 +33,9 @@ export class HomePage {
   loadCategories(){
      if(!this.helper.isConnected()){this.offline = true;this.helper.displayConnectionError(); return;}
      this.helper.showSpinner();
-     this.cateProvider.queryCate({parent:'0'}).subscribe((res:any)=>{
-       this.categories = res.categories.filter((category) => { return !category.parent });
+     this.cateProvider.queryCate({parent:'0'}).then((res:any)=>{
+       let data = JSON.parse(res.data)
+       this.categories = data.categories.filter((category) => { return !category.parent });
        this.helper.runZone();
        this.helper.hideSpinner();
     }, 
