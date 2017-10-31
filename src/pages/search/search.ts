@@ -16,7 +16,7 @@ import { PostPage } from '../post/post'
   templateUrl: 'search.html',
 })
 export class SearchPage {
-	searchKey:string;
+	  searchKey:string;
   	searching: boolean = false;
   	searchResults:any[]=[];
     nextPage:number = 2;
@@ -32,31 +32,30 @@ export class SearchPage {
 
     search(ev){
 	    if(!this.searchKey) return;
-	    console.log(this.searchKey)
+      if(!this.helper.isConnected()){this.helper.displayConnectionError(); return;}
 	    this.searching = true;
       this.nextPage = 2;
-	    this.cateProvider.SearchPost({search:this.searchKey, count:20}).then((res:any)=>{
+	    this.cateProvider.SearchPost({search:this.searchKey, count:10}).then((res:any)=>{
           let data = JSON.parse(res.data)
 	        this.searching = false;
 	        this.searchResults = data.posts;
           this.countTotal = data.count_total
-	    }, 
-	    (err)=>{
-	      this.helper.handleRequestError(err);
-	    })
+	    }).catch(err => {
+      this.helper.handleRequestError(err);
+    })
   }
 
     loadMore(infiniteScroll){
     if(!this.helper.isConnected()){infiniteScroll.complete(); return;}
-      this.cateProvider.SearchPost({search:this.searchKey, count:20, page:this.nextPage}).then((res:any)=>{
+      this.cateProvider.SearchPost({search:this.searchKey, count:10, page:this.nextPage}).then((res:any)=>{
           let data = JSON.parse(res.data)
           this.searchResults.push( ...data.posts);
           infiniteScroll.complete();
           this.nextPage++
-      }, 
-      (err)=>{
+      }).catch(err => {
         this.helper.handleRequestError(err);
-      })  }
+      })
+    }
 
 	openPost(post){
 		this.helper.createModal(PostPage, {post:post}).present();

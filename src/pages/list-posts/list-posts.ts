@@ -40,7 +40,7 @@ export class ListPostsPage {
         if(infiniteScroll) infiniteScroll.complete();
         this.nextPage++;
         this.helper.hideSpinner();
-    },(err)=>{
+    }).catch(err => {
       this.helper.handleRequestError(err);
     })
   }
@@ -55,8 +55,7 @@ export class ListPostsPage {
    this.isOdd = (data.categories.length % 2) == 1
    let size = 4;
    while (data.categories.length ) this.arrays.push(data.categories.splice(0, size));
-    }, 
-    (err)=>{
+    }).catch(err => {
       this.helper.handleRequestError(err);
     })
   }

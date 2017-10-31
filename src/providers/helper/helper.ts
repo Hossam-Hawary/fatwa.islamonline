@@ -4,7 +4,7 @@ import { Toast, ToastOptions } from '@ionic-native/toast';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 import { TranslateService } from '@ngx-translate/core';
-import { Pro } from '@ionic/pro';
+// import { Pro } from '@ionic/pro';
 
 
 

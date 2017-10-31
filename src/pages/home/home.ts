@@ -38,8 +38,7 @@ export class HomePage {
        this.categories = data.categories.filter((category) => { return !category.parent });
        this.helper.runZone();
        this.helper.hideSpinner();
-    }, 
-    (err)=>{
+    }).catch(err => {
       this.helper.handleRequestError(err);
     })
   }
