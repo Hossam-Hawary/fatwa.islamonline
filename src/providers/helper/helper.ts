@@ -1,9 +1,10 @@
 import { Injectable, NgZone } from '@angular/core';
-import { LoadingController, ModalController, Platform} from 'ionic-angular';
+import { LoadingController, ModalController, Platform, Events} from 'ionic-angular';
 import { Toast, ToastOptions } from '@ionic-native/toast';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 import { TranslateService } from '@ngx-translate/core';
+
 // import { Pro } from '@ionic/pro';
 
 
@@ -15,7 +16,7 @@ export class HelperProvider {
 
 	loader:any;
 	connectionState:boolean;
-  constructor(private loadingCntrl:LoadingController, 
+  constructor(private loadingCntrl:LoadingController, private event:Events,
   	private modalCtrl:ModalController, private toast:Toast, private socialSharing: SocialSharing,
   	private platform: Platform, private spinnerDialog: SpinnerDialog,
      private translateService: TranslateService, private zone:NgZone) {
@@ -90,6 +91,10 @@ export class HelperProvider {
       this.zone.run(()=>{
        if(callBack) callBack();
       })
+    }
+    
+    closeSearch(){
+      this.event.publish('closeSearch', null);
     }
 
      share(url, message, subject){

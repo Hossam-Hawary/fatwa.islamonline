@@ -4,7 +4,6 @@ import { CategoriesProvider } from '../../providers/categories/categories'
 import { HelperProvider } from '../../providers/helper/helper'
 import { Network } from '@ionic-native/network';
 import { ListPostsPage } from '../list-posts/list-posts'
-import { SearchPage } from '../search/search'
 
 
 @Component({
@@ -14,6 +13,7 @@ import { SearchPage } from '../search/search'
 export class HomePage {
 	categories:any = [];
   offline:boolean = false;
+  searching:boolean;
   constructor( public navCtrl: NavController, private cateProvider:CategoriesProvider,
     private helper:HelperProvider, private platform:Platform,
     private network:Network) {
@@ -47,7 +47,11 @@ export class HomePage {
     if(!this.helper.isConnected()){this.helper.displayConnectionError(); return;}
     this.navCtrl.push(ListPostsPage, {category:category})
   }
-    openSearch(){
-      this.helper.createModal(SearchPage).present();
+    startSearch(){
+      this.searching = true;
+    }
+    endSearch(){
+      this.searching = false;
+      this.helper.closeSearch();
     }
 }

@@ -12,7 +12,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPostsPage } from '../pages/list-posts/list-posts';
 import { PostPage } from '../pages/post/post'
-import { SearchPage } from '../pages/search/search'
+import { SearchComponent } from '../components/search/search'
 
 import { ApiProvider } from '../providers/api/api';
 import { CategoriesProvider } from '../providers/categories/categories';
@@ -34,7 +34,7 @@ export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
  const pages:any[] =[
-  HomePage, ListPostsPage, PostPage, SearchPage
+  HomePage, ListPostsPage, PostPage
   ]
 
   const IonicPro = Pro.init('840c7614', {
@@ -50,6 +50,7 @@ export function createTranslateLoader(http: HttpClient) {
   @NgModule({
   declarations: [
     MyApp,
+    SearchComponent,
   ...pages
   ],
   imports: [

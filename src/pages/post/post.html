@@ -1,6 +1,6 @@
 
 <ion-header dir="rtl">
-  <ion-toolbar>
+  <ion-toolbar *ngIf="!searching">
     <ion-buttons class="order" start (click)="close()">
       <button ion-button clear icon-only>
         <ion-icon name="close"></ion-icon>
@@ -13,12 +13,21 @@
       </button>
     </ion-buttons>
   </ion-toolbar>
+    <ion-toolbar *ngIf="searching">
+    <ion-buttons class="order" start (click)="endSearch()">
+      <button ion-button clear icon-only>
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{'SEARCH' | translate }}</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 
 <ion-content dir="rtl">
-  <ion-searchbar [placeholder]="helper.translate('SEARCH')" (click)="openSearch()"></ion-searchbar>
-  <div class="question-answer" padding>
+  <search (endSearching)="endSearch()" (startSearching)="startSearch()" ></search>
+
+  <div class="question-answer" padding *ngIf="!searching">
     <div class="container" padding>
       <h2 [innerHtml]="post.title"></h2>
       <p class="question-answer-title"> {{'QUESTION' | translate }}</p>

@@ -3,7 +3,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { CategoriesProvider } from '../../providers/categories/categories'
 import { PostPage } from '../post/post'
 import {HelperProvider} from '../../providers/helper/helper'
-import { SearchPage } from '../search/search'
 
 
 
@@ -19,6 +18,7 @@ export class ListPostsPage {
   arrays:any[]=[]
 	totalPages:number = 1;
 	nextPage:number = 1;
+  searching:boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
   	private cateProvider:CategoriesProvider, private helper:HelperProvider) {
@@ -76,8 +76,13 @@ export class ListPostsPage {
 	openPost(post){
     this.helper.createModal(PostPage, {post:post}).present();
 	}
-     openSearch(){
-      this.helper.createModal(SearchPage).present();
-    }
+  startSearch(){
+      this.searching = true;
+  }
+  endSearch(){
+      this.searching = false;
+      this.helper.closeSearch();
+  }
+
 
 }
