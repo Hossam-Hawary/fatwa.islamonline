@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavParams, ViewController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavParams, ViewController, Content } from 'ionic-angular';
 import {HelperProvider} from '../../providers/helper/helper'
 
 /**
@@ -14,6 +14,7 @@ import {HelperProvider} from '../../providers/helper/helper'
   templateUrl: 'post.html',
 })
 export class PostPage {
+  @ViewChild(Content) content: Content;
 	post:any;
   searching:boolean;
 
@@ -31,7 +32,7 @@ export class PostPage {
       this.searching = true;
   }
   endSearch(){
+      this.content.scrollToTop();
       this.searching = false;
-      this.helper.closeSearch();
   }
 }

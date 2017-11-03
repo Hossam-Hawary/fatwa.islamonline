@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, NavParams, Content } from 'ionic-angular';
 import { CategoriesProvider } from '../../providers/categories/categories'
 import { PostPage } from '../post/post'
 import {HelperProvider} from '../../providers/helper/helper'
@@ -19,6 +19,7 @@ export class ListPostsPage {
 	totalPages:number = 1;
 	nextPage:number = 1;
   searching:boolean;
+  @ViewChild(Content) content: Content;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
   	private cateProvider:CategoriesProvider, private helper:HelperProvider) {
@@ -80,6 +81,7 @@ export class ListPostsPage {
       this.searching = true;
   }
   endSearch(){
+      this.content.scrollToTop();
       this.searching = false;
       this.helper.closeSearch();
   }
