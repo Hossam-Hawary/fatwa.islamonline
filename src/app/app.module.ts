@@ -12,7 +12,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPostsPage } from '../pages/list-posts/list-posts';
 import { PostPage } from '../pages/post/post'
-import { SearchPage } from '../pages/search/search'
+import { SearchComponent } from '../components/search/search'
 
 import { ApiProvider } from '../providers/api/api';
 import { CategoriesProvider } from '../providers/categories/categories';
@@ -25,6 +25,8 @@ import { Toast } from '@ionic-native/toast';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { HTTP } from '@ionic-native/http';
+
 
 
 
@@ -32,11 +34,11 @@ export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
  const pages:any[] =[
-  HomePage, ListPostsPage, PostPage, SearchPage
+  HomePage, ListPostsPage, PostPage
   ]
 
   const IonicPro = Pro.init('840c7614', {
-    appVersion: "0.0.1"
+    appVersion: "1.0.0"
   });
 
   export class MyErrorHandler implements ErrorHandler {
@@ -48,6 +50,7 @@ export function createTranslateLoader(http: HttpClient) {
   @NgModule({
   declarations: [
     MyApp,
+    SearchComponent,
   ...pages
   ],
   imports: [
@@ -69,9 +72,9 @@ export function createTranslateLoader(http: HttpClient) {
    ...pages
   ],
   providers: [
-    StatusBar, SplashScreen, { provide: ErrorHandler, useClass: MyErrorHandler },
+    StatusBar, SplashScreen,
     ApiProvider, CategoriesProvider, HelperProvider, Network, Toast, SocialSharing,
-    SpinnerDialog, EmailComposer
+    SpinnerDialog, EmailComposer, HTTP
   ]
 })
 export class AppModule {}

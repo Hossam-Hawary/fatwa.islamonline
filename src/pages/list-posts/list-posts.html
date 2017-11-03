@@ -1,15 +1,28 @@
 <ion-header >
-  <ion-navbar>
+  <ion-toolbar *ngIf="!searching">
+    <ion-buttons class="order" start navPop>
+      <button ion-button clear icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title [innerHtml]="category.title"></ion-title>
-  </ion-navbar>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="searching">
+    <ion-buttons class="order" start (click)="endSearch()">
+      <button ion-button clear icon-only>
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{'SEARCH' | translate }}</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
- <ion-searchbar [placeholder]="helper.translate('SEARCH')" (click)="openSearch()"></ion-searchbar>
+<search (endSearching)="endSearch()" (startSearching)="startSearch()" ></search>
 
 
- <ion-slides dir="rtl" *ngIf="arrays.length">
+ <ion-slides dir="rtl" *ngIf="arrays.length && !searching">
 
   <ion-slide *ngFor="let ar of arrays; let lastAr=last; let firstAr=first">
     <ion-grid class="cat-list">
@@ -35,13 +48,13 @@
 
 </ion-slides>
 
-<ul class="questions">
+<ul class="questions" *ngIf="!searching">
   <li *ngFor="let post of posts" (click)="openPost(post)" [innerHtml]="post.title">
   </li>
-</ul>
-
-<ion-infinite-scroll (ionInfinite)="loadMore($event)" [enabled]=" nextPage <= totalPages"
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)" [enabled]=" nextPage <= totalPages"
   threshold='1%'>
    <ion-infinite-scroll-content></ion-infinite-scroll-content>
  </ion-infinite-scroll>
+</ul>
+
 </ion-content>

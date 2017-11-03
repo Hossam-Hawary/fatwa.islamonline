@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
-import { NavController, Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, Platform, Content } from 'ionic-angular';
 import { CategoriesProvider } from '../../providers/categories/categories'
 import { HelperProvider } from '../../providers/helper/helper'
 import { Network } from '@ionic-native/network';
 import { ListPostsPage } from '../list-posts/list-posts'
-import { SearchPage } from '../search/search'
 
 
 @Component({
@@ -12,8 +11,10 @@ import { SearchPage } from '../search/search'
   templateUrl: 'home.html'
 })
 export class HomePage {
+  @ViewChild(Content) content: Content;
 	categories:any = [];
   offline:boolean = false;
+  searching:boolean;
   constructor( public navCtrl: NavController, private cateProvider:CategoriesProvider,
     private helper:HelperProvider, private platform:Platform,
     private network:Network) {
@@ -33,12 +34,12 @@ export class HomePage {
   loadCategories(){
      if(!this.helper.isConnected()){this.offline = true;this.helper.displayConnectionError(); return;}
      this.helper.showSpinner();
-     this.cateProvider.queryCate({parent:'0'}).subscribe((res:any)=>{
-       this.categories = res.categories.filter((category) => { return !category.parent });
+     this.cateProvider.queryCate({parent:'0'}).then((res:any)=>{
+       let data = JSON.parse(res.data)
+       this.categories = data.categories.filter((category) => { return !category.parent });
        this.helper.runZone();
        this.helper.hideSpinner();
-    }, 
-    (err)=>{
+    }).catch(err => {
       this.helper.handleRequestError(err);
     })
   }
@@ -47,7 +48,12 @@ export class HomePage {
     if(!this.helper.isConnected()){this.helper.displayConnectionError(); return;}
     this.navCtrl.push(ListPostsPage, {category:category})
   }
-    openSearch(){
-      this.helper.createModal(SearchPage).present();
+    startSearch(){
+      this.searching = true;
+    }
+    endSearch(){
+      this.content.scrollToTop();
+      this.searching = false;
+      this.helper.closeSearch();
     }
 }

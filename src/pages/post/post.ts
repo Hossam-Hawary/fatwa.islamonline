@@ -1,8 +1,6 @@
-import { Component } from '@angular/core';
-import { NavParams, ViewController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavParams, ViewController, Content } from 'ionic-angular';
 import {HelperProvider} from '../../providers/helper/helper'
-import { SearchPage } from '../search/search'
-
 
 /**
  * Generated class for the PostsPage page.
@@ -16,7 +14,9 @@ import { SearchPage } from '../search/search'
   templateUrl: 'post.html',
 })
 export class PostPage {
+  @ViewChild(Content) content: Content;
 	post:any;
+  searching:boolean;
 
   constructor( public navParams: NavParams,
   	private helper:HelperProvider, public viewCtrl: ViewController) {
@@ -28,7 +28,11 @@ export class PostPage {
    close() {
      this.viewCtrl.dismiss();
    }
-    openSearch(){
-      this.helper.createModal(SearchPage).present();
-    }
+  startSearch(){
+      this.searching = true;
+  }
+  endSearch(){
+      this.content.scrollToTop();
+      this.searching = false;
+  }
 }

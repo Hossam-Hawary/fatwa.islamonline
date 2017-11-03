@@ -1,23 +1,5 @@
-
-<ion-header dir="rtl">
-
-  <ion-navbar>
-    <ion-buttons class="order" start (click)="close()">
-      <button ion-button clear icon-only>
-        <ion-icon name="close"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-title>{{'SEARCH' | translate }}</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content dir="rtl">
-      <ion-searchbar
-        autofocus
+ <ion-searchbar (click)="startSearch()"
         [(ngModel)]="searchKey"
-        animated=false
         debounce=500
         spellcheck=true
         showCancelButton=true
@@ -27,23 +9,21 @@
         (ionCancel)="close()"
         (ionInput)="search($event)">
       </ion-searchbar>
-	    <div *ngIf="searching" class="spinner">
+	    <div *ngIf="active && searching" class="spinner">
 	    	 <ion-spinner color="primary"></ion-spinner>
 	    </div>
 
-      <ul class="questions">
+      <ul class="questions" *ngIf="active && searchResults.length ">
         <li *ngFor="let post of searchResults" (click)="openPost(post)" [innerHtml]="post.title">
         </li>
       </ul>
 
-       <div class="state-app" *ngIf="!countTotal && !searching">
+       <div class="state-app" *ngIf="active && !countTotal && !searching">
          <img src="assets/img/no-network.png" alt="" />
          <p>{{'ERRORS.NO_RESAULTS' | translate }}</p>
        </div>
   <ion-infinite-scroll (ionInfinite)="loadMore($event)"
-  [enabled]=" countTotal > searchResults.length"
-  threshold='1%'>
+  [enabled]=" active && countTotal > searchResults.length && searchResults.length"
+  threshold='5%'>
    <ion-infinite-scroll-content></ion-infinite-scroll-content>
  </ion-infinite-scroll>
-
-</ion-content>
