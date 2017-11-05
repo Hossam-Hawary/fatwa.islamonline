@@ -73,9 +73,9 @@
             "cordova-plugin-x-socialsharing": {},
             "cordova-plugin-native-spinner": {},
             "cordova-plugin-x-toast": {},
-            "cordova-plugin-statusbar": {},
             "cordova-plugin-email-composer": {},
-            "cordova-plugin-advanced-http": {}
+            "cordova-plugin-advanced-http": {},
+            "cordova-plugin-statusbar": {}
         },
         "platforms": [
             "android",
