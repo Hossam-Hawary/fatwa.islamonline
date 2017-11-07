@@ -15,6 +15,7 @@ export class HomePage {
 	categories:any = [];
   offline:boolean = false;
   searching:boolean;
+  isOdd:boolean;
   constructor( public navCtrl: NavController, private cateProvider:CategoriesProvider,
     private helper:HelperProvider, private platform:Platform,
     private network:Network) {
@@ -37,6 +38,7 @@ export class HomePage {
      this.cateProvider.queryCate({parent:'0'}).then((res:any)=>{
        let data = JSON.parse(res.data)
        this.categories = data.categories.filter((category) => { return !category.parent });
+       this.isOdd = (this.categories.length % 2) == 1
        this.helper.runZone();
        this.helper.hideSpinner();
     }).catch(err => {
