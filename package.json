@@ -1,7 +1,7 @@
 {
   "name": "Fatwa",
   "version": "0.0.1",
-  "author": "Hawary",
+  "author": "Hossam Eldeen Hawary",
   "homepage": "https://fatwa.islamonline.net",
   "private": true,
   "scripts": {
@@ -34,7 +34,7 @@
     "@ngx-translate/core": "^8.0.0",
     "@ngx-translate/http-loader": "^2.0.0",
     "cordova-android": "^6.2.3",
-    "cordova-ios": "^4.5.2",
+    "cordova-ios": "4.5.3",
     "cordova-plugin-advanced-http": "^1.7.1",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-device": "^1.1.6",
