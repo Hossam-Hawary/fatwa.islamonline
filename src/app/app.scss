@@ -83,7 +83,8 @@ ion-searchbar.searchbar  {
     background: url(../assets/img/question.png) no-repeat right top;
     background-size: 6%;
     padding-right: 3rem;
-    margin-bottom: 1rem;
+    margin-bottom: auto;
+    line-height: 4rem;
     &:last-child {
       border-bottom: 1px solid #dedede;
       padding-bottom: 1rem;
