@@ -42,7 +42,7 @@ ion-searchbar.searchbar  {
     flex: 100%;
   }
   ion-col.full-width.alone {
-    height: 31rem;
+    height: 30rem;
     max-height: 31rem;
   }
   ion-col  {
@@ -81,10 +81,10 @@ ion-searchbar.searchbar  {
   padding: 0;
   li {
     background: url(../assets/img/question.png) no-repeat right top;
-    background-size: 6%;
-    padding-right: 3rem;
+    background-size: 4%;
+    padding-right: 4.2rem;
     margin-bottom: auto;
-    line-height: 4rem;
+    height: 5.5rem;
     &:last-child {
       border-bottom: 1px solid #dedede;
       padding-bottom: 1rem;
